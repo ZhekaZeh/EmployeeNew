@@ -12,12 +12,12 @@ namespace EmployeeViewer.Model
         public void LoadFile() { }
         public void SaveFile() { }
 
-        public void AddItem() 
+        public void AddItem()
         {
             EmployeeInfo employeeInfo = new EmployeeInfo();
-            employeeInfo.Show();
+            employeeInfo.ShowDialog();
         }
-        public void SaveItem() 
+        public void SaveItem()
         {
             MessageBox.Show("Hello");
         }
