@@ -4,7 +4,7 @@
         xmlns:Model="clr-namespace:EmployeeViewer.Model" x:Class="EmployeeViewer.EmployeeInfo"
         Title="EmployeeInfo" Height="300" Width="500" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,10,0,0" TextWrapping="Wrap" Text="CompanyName" VerticalAlignment="Top" Width="346"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,10,0,0" TextWrapping="Wrap" Text="{Binding Path=CompanyName}" VerticalAlignment="Top" Width="346" />
         <Label Content="Company Name" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="First Name" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="Last Name" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="95"/>
@@ -12,14 +12,15 @@
         <Label Content="Position" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="Salary" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="Phone | E-mail" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Width="95"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,38,0,0" TextWrapping="Wrap" Text="FirstName" VerticalAlignment="Top" Width="346"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346" Name="LastName"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,94,0,0" TextWrapping="Wrap" Text="Age&#x9;" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="270,92,0,0"  VerticalAlignment="Top" Width="100"/>
-        <ComboBox HorizontalAlignment="Left" Margin="136,122,0,0" VerticalAlignment="Top" Width="234"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="270,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346" Text="{Binding Path=FirstName}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346" Name="LastName" Text="{Binding Path=LastName}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,95
+                 ,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Age}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="270,95,0,0"  VerticalAlignment="Top" Width="100" ItemsSource="{Binding Source=Sex}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="136,122,0,0" VerticalAlignment="Top" Width="234" ItemsSource="{Binding Source=Position}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Salary}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="136,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Phone}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="270,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Text="{Binding Path=Email}"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="75" Click="SaveItem_Button_Click"/>
         <Button Content="Clear" HorizontalAlignment="Left" Margin="90,238,0,0" VerticalAlignment="Top" Width="75"/>
 

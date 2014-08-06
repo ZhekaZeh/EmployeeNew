@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using EmployeeViewer.Model;
 
 namespace EmployeeViewer
@@ -20,16 +8,18 @@ namespace EmployeeViewer
     /// </summary>
     public partial class EmployeeInfo : Window
     {
-        Core core = new Core();
+        public Employee CurrentEmployee { get; set; }
 
         public EmployeeInfo()
         {
             InitializeComponent();
+            CurrentEmployee = new Employee();
+            DataContext = CurrentEmployee;
         }
-
+        
         private void SaveItem_Button_Click(object sender, RoutedEventArgs e)
         {
-            core.SaveItem();
+            //core.SaveItem();
         }
     }
 }

@@ -1,43 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using EmployeeViewer.Model;
 
 namespace EmployeeViewer
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    ///NO RUSSIAN IN THE CODE!
     /// </summary>
     public partial class MainWindow : Window
     {
-        Core core = new Core();
 
-        List<Employee> Employees = new List<Employee>();
+        #region Properties
+
+        public ObservableCollection<Employee> Employees { get; set; }
+
+        #endregion
+
+        #region Constructor
 
         public MainWindow()
         {
             InitializeComponent();
+            //ViewModel = new MainWindowViewModel();
+            Employees = new ObservableCollection<Employee>();
+            DataContext = this;
         }
+
+        #endregion
+
+        #region Private methods
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            core.AddItem();
+            AddItem();
         }
 
-        private void LoadFile_Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Adds the item.
+        /// </summary>
+        public void AddItem()
         {
-            core.LoadFile();
+            var employeeInfo = new EmployeeInfo();
+            employeeInfo.ShowDialog();
+
+            var employee = employeeInfo.CurrentEmployee;
+
+            Employees.Add(employee);
         }
+
+        #endregion
     }
 }

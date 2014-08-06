@@ -1,28 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace EmployeeViewer.Model
+﻿namespace EmployeeViewer.Model
 {
-    class Core
+    public class Core
     {
-        public void LoadFile() { }
-        public void SaveFile() { }
+        #region Private members
 
-        public void AddItem()
+        private static Core _instance;
+
+        #endregion
+
+        #region Properties
+
+        public static Core Instance
         {
-            EmployeeInfo employeeInfo = new EmployeeInfo();
-            employeeInfo.ShowDialog();
-        }
-        public void SaveItem()
-        {
-            MessageBox.Show("Hello");
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Core();
+                }
+
+                return _instance;
+            }
         }
 
-        public void RemoveItem() { }
-        public void EditItem() { }
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Loads the file.
+        /// </summary>
+        public void LoadFile()
+        {
+        }
+
+        /// <summary>
+        /// Saves the file.
+        /// </summary>
+        public void SaveFile()
+        {
+        }
+
+        #endregion
     }
 }
