@@ -71,7 +71,6 @@
     </ApplicationDefinition>
     <Compile Include="Model\Genders.cs" />
     <Compile Include="Model\Positions.cs" />
-    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Serialization\Serializator.cs" />
     <Page Include="EmployeeInfo.xaml">
       <SubType>Designer</SubType>

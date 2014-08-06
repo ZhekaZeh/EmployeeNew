@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmployeeViewer.Model
 {
-    enum Positions
+    public enum Positions
     {
         
     }
