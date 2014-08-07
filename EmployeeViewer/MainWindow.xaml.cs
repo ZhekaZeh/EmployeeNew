@@ -100,5 +100,10 @@ namespace EmployeeViewer
             core.SaveFile();
         }
 
+        private void Edit_Double_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            EditItem();
+        }
+
     }
 }

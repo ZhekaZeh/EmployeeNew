@@ -39,6 +39,7 @@ namespace EmployeeViewer.Model
         /// </summary>
         public void LoadFile()
         {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
         }
 
         /// <summary>
