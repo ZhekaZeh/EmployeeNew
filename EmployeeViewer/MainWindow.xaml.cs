@@ -21,7 +21,7 @@ namespace EmployeeViewer
             InitializeComponent();
             //ViewModel = new MainWindowViewModel();
             Employees = new ObservableCollection<Employee>();
-            DataContext = this;
+            //DataContext = this;
             MainDataGrid.ItemsSource = Employees;   
         }
 
@@ -39,6 +39,11 @@ namespace EmployeeViewer
             RemoveItem();
         }
 
+        private void Edit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            EditItem();
+        }
+
         #endregion
 
         #region Public methods
@@ -52,7 +57,7 @@ namespace EmployeeViewer
             employeeInfo.ShowDialog();
 
             var employee = employeeInfo.CurrentEmployee;
-
+            if(employee != null)
             Employees.Add(employee);
         }
 
@@ -65,6 +70,20 @@ namespace EmployeeViewer
             {
                 Employee employee = MainDataGrid.SelectedItem as Employee;
                 Employees.Remove(employee);
+            }
+        }
+
+        /// <summary>
+        /// Edits selected item
+        /// </summary>
+        public void EditItem()
+        {
+            if (MainDataGrid.SelectedIndex >= 0)
+            {
+                Employee employee = MainDataGrid.SelectedItem as Employee;
+                var employeeInfo = new EmployeeInfo();
+                employeeInfo.DataContext = employee;
+                employeeInfo.ShowDialog();
             }
         }
 

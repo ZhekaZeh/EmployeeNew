@@ -11,18 +11,20 @@ namespace EmployeeViewer
         {
             InitializeComponent();
             CurrentEmployee = new Employee();
+            if (CurrentEmployee != null)
             DataContext = CurrentEmployee;
         }
         
         private void SaveItem_Button_Click(object sender, RoutedEventArgs e)
         {
             //core.SaveItem();
-            DataContext = CurrentEmployee;
+            CurrentEmployee = new Employee();
+            
         }
 
-        private void Closed_Button_Click(object sender, System.EventArgs e)
+        private void Clear_Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.DataContext = default(Employee); // must be fixed
         }
     }
 }

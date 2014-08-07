@@ -9,6 +9,6 @@
         <Button Content="Button" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Add Employee" HorizontalAlignment="Left" Margin="90,230,0,0" VerticalAlignment="Top" Width="120" Click="Add_Button_Click"/>
         <Button Content="Remove Employee" HorizontalAlignment="Left" Margin="90,257,0,0" VerticalAlignment="Top" Width="120" Click="Remove_Button_Click"/>
-        <Button Content="Edit Employee" HorizontalAlignment="Left" Margin="90,284,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Edit Employee" HorizontalAlignment="Left" Margin="90,284,0,0" VerticalAlignment="Top" Width="120" Click="Edit_Button_Click"/>
     </Grid>
 </Window>
