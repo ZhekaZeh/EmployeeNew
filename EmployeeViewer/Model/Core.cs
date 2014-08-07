@@ -1,10 +1,17 @@
-﻿namespace EmployeeViewer.Model
+﻿using EmployeeViewer.Serialization;
+using System;
+using System.IO;
+using System.Windows;
+
+namespace EmployeeViewer.Model
 {
     public class Core
     {
         #region Private members
 
         private static Core _instance;
+
+        private Serializator serializator;
 
         #endregion
 
@@ -39,6 +46,14 @@
         /// </summary>
         public void SaveFile()
         {
+            
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.FileName = "BinaryFile"; 
+            saveFileDialog.Filter = "Text documents (.dat)|*.dat"; 
+            saveFileDialog.ShowDialog();
+
+            serializator = new Serializator(saveFileDialog.FileName);
+            serializator.Serialize();
         }
 
         #endregion

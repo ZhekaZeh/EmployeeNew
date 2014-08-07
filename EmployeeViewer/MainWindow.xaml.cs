@@ -7,10 +7,15 @@ namespace EmployeeViewer
 {
     public partial class MainWindow : Window
     {
+        #region Private members
+
+        private Core core;
+
+        #endregion
 
         #region Properties
 
-        public ObservableCollection<Employee> Employees { get; set; }
+        public static ObservableCollection<Employee> Employees { get; set; }
 
         #endregion
 
@@ -19,6 +24,7 @@ namespace EmployeeViewer
         public MainWindow()
         {
             InitializeComponent();
+            core = new Core();
             //ViewModel = new MainWindowViewModel();
             Employees = new ObservableCollection<Employee>();
             //DataContext = this;
@@ -57,8 +63,8 @@ namespace EmployeeViewer
             employeeInfo.ShowDialog();
 
             var employee = employeeInfo.CurrentEmployee;
-            if(employee != null)
-            Employees.Add(employee);
+            if (employee != null)
+                Employees.Add(employee);
         }
 
         /// <summary>
@@ -88,6 +94,11 @@ namespace EmployeeViewer
         }
 
         #endregion
+
+        private void SaveFile_Click_Button(object sender, RoutedEventArgs e)
+        {
+            core.SaveFile();
+        }
 
     }
 }

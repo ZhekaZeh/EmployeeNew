@@ -5,7 +5,7 @@ namespace EmployeeViewer
 {
     public partial class EmployeeInfo : Window
     {
-        public Employee CurrentEmployee { get; set; }
+        public  Employee CurrentEmployee { get; set; }
 
         public EmployeeInfo()
         {
@@ -18,13 +18,14 @@ namespace EmployeeViewer
         private void SaveItem_Button_Click(object sender, RoutedEventArgs e)
         {
             //core.SaveItem();
-            CurrentEmployee = new Employee();
-            
+                            
         }
 
         private void Clear_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.DataContext = default(Employee); // must be fixed
+            this.DataContext = default(Employee);
+            CurrentEmployee = null;
         }
+
     }
 }

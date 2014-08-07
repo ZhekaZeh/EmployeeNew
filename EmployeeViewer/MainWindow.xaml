@@ -5,7 +5,7 @@
     <Grid>
         <DataGrid Name="MainDataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="215" Width="497" ItemsSource="{Binding Path=Employees}" IsReadOnly="True" />
         <Button Content="Load File" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="75" />
-        <Button Content="Save File" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Save File" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top" Width="75" Click="SaveFile_Click_Button"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Add Employee" HorizontalAlignment="Left" Margin="90,230,0,0" VerticalAlignment="Top" Width="120" Click="Add_Button_Click"/>
         <Button Content="Remove Employee" HorizontalAlignment="Left" Margin="90,257,0,0" VerticalAlignment="Top" Width="120" Click="Remove_Button_Click"/>
