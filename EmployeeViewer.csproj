@@ -69,7 +69,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core.cs" />
     <Compile Include="Model\Genders.cs" />
     <Compile Include="Model\Positions.cs" />
     <Compile Include="Serialization\Serializator.cs" />
@@ -94,6 +93,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Core.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

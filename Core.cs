@@ -12,6 +12,8 @@ namespace EmployeeViewer.Model
 
         private static Core _instance;
 
+        private Serializator serializator;
+
         #endregion
 
         #region Properties
