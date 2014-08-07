@@ -5,15 +5,15 @@ using EmployeeViewer.Model;
 
 namespace EmployeeViewer
 {
-    /// <summary>
-    ///NO RUSSIAN IN THE CODE!
-    /// </summary>
     public partial class MainWindow : Window
     {
+        #region Private members        
+
+        #endregion
 
         #region Properties
 
-        public ObservableCollection<Employee> Employees { get; set; }
+        public static ObservableCollection<Employee> Employees { get; set; }
 
         #endregion
 
@@ -22,9 +22,8 @@ namespace EmployeeViewer
         public MainWindow()
         {
             InitializeComponent();
-            //ViewModel = new MainWindowViewModel();
-            Employees = new ObservableCollection<Employee>();
-            DataContext = this;
+            Employees = new ObservableCollection<Employee>();            
+            MainDataGrid.ItemsSource = Employees;   
         }
 
         #endregion
@@ -36,19 +35,66 @@ namespace EmployeeViewer
             AddItem();
         }
 
+        private void Remove_Button_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveItem();
+        }
+
+        private void Edit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            EditItem();
+        }
+
+        #endregion
+
+        #region Public methods
+
         /// <summary>
         /// Adds the item.
         /// </summary>
         public void AddItem()
         {
             var employeeInfo = new EmployeeInfo();
-            employeeInfo.ShowDialog();
 
-            var employee = employeeInfo.CurrentEmployee;
+            if (employeeInfo.ShowDialog() == true) 
+            {
+                var employee = employeeInfo.CurrentEmployee;
+                Employees.Add(employee);
+            };            
+        }
 
-            Employees.Add(employee);
+        /// <summary>
+        /// Removes selected item
+        /// </summary>
+        public void RemoveItem()
+        {
+            if (MainDataGrid.SelectedIndex >= 0)
+            {
+                Employee employee = MainDataGrid.SelectedItem as Employee;
+                Employees.Remove(employee);
+            }
+        }
+
+        /// <summary>
+        /// Edits selected item
+        /// </summary>
+        public void EditItem()
+        {
+            if (MainDataGrid.SelectedIndex >= 0)
+            {
+                Employee employee = MainDataGrid.SelectedItem as Employee;
+                var employeeInfo = new EmployeeInfo();
+                employeeInfo.DataContext = employee;
+                employeeInfo.ShowDialog();
+            }
         }
 
         #endregion
+
+        private void SaveFile_Click_Button(object sender, RoutedEventArgs e)
+        {
+            Core.Instance.SaveToFile(Employees);
+        }
+
     }
 }
