@@ -5,9 +5,6 @@ using EmployeeViewer.Model;
 
 namespace EmployeeViewer
 {
-    /// <summary>
-    ///NO RUSSIAN IN THE CODE!
-    /// </summary>
     public partial class MainWindow : Window
     {
 
@@ -25,6 +22,7 @@ namespace EmployeeViewer
             //ViewModel = new MainWindowViewModel();
             Employees = new ObservableCollection<Employee>();
             DataContext = this;
+            MainDataGrid.ItemsSource = Employees;   
         }
 
         #endregion
@@ -35,6 +33,15 @@ namespace EmployeeViewer
         {
             AddItem();
         }
+
+        private void Remove_Button_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveItem();
+        }
+
+        #endregion
+
+        #region Public methods
 
         /// <summary>
         /// Adds the item.
@@ -49,6 +56,19 @@ namespace EmployeeViewer
             Employees.Add(employee);
         }
 
+        /// <summary>
+        /// Removes selected item
+        /// </summary>
+        public void RemoveItem()
+        {
+            if (MainDataGrid.SelectedIndex >= 0)
+            {
+                Employee employee = MainDataGrid.SelectedItem as Employee;
+                Employees.Remove(employee);
+            }
+        }
+
         #endregion
+
     }
 }

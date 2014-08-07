@@ -3,9 +3,6 @@ using EmployeeViewer.Model;
 
 namespace EmployeeViewer
 {
-    /// <summary>
-    /// Логика взаимодействия для EmployeeInfo.xaml
-    /// </summary>
     public partial class EmployeeInfo : Window
     {
         public Employee CurrentEmployee { get; set; }
@@ -20,6 +17,12 @@ namespace EmployeeViewer
         private void SaveItem_Button_Click(object sender, RoutedEventArgs e)
         {
             //core.SaveItem();
+            DataContext = CurrentEmployee;
+        }
+
+        private void Closed_Button_Click(object sender, System.EventArgs e)
+        {
+            
         }
     }
 }
