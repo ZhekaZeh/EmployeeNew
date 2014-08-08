@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using EmployeeViewer.Model;
 
@@ -7,13 +6,9 @@ namespace EmployeeViewer
 {
     public partial class MainWindow : Window
     {
-        #region Private members        
-
-        #endregion
-
         #region Properties
         
-        public static ObservableCollection<Employee> Employees { get; set; }
+        private static ObservableCollection<Employee> Employees { get; set; }
 
         #endregion
 
@@ -45,6 +40,10 @@ namespace EmployeeViewer
             EditItem();
         }
 
+        private void DoubleClick_On_Item(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            EditItem();
+        }
 
         private void SaveFile_Click_Button(object sender, RoutedEventArgs e)
         {
@@ -54,12 +53,10 @@ namespace EmployeeViewer
         private void Load_Button_Click(object sender, RoutedEventArgs e)
         {
             Employees = Core.Instance.LoadFromFile();
+            MainDataGrid.ItemsSource = Employees;
         }
 
-        private void DoubleClick_On_Item(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            EditItem();
-        }
+
         #endregion
 
         #region Public methods
@@ -79,7 +76,7 @@ namespace EmployeeViewer
         }
 
         /// <summary>
-        /// Removes selected item
+        /// Removes selected item.
         /// </summary>
         public void RemoveItem()
         {
@@ -91,7 +88,7 @@ namespace EmployeeViewer
         }
 
         /// <summary>
-        /// Edits selected item
+        /// Edits selected item.
         /// </summary>
         public void EditItem()
         {

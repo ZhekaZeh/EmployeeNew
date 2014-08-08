@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Model="clr-namespace:EmployeeViewer.Model" x:Class="EmployeeViewer.EmployeeInfo"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="EmployeeInfo" Height="300" Width="500" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
-    
+        Title="Employee's Information" Height="300" Width="500" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Background="#FF494949">
+
     <Window.Resources>
         <ObjectDataProvider x:Key="dataFromGenders"
             MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
@@ -19,7 +19,7 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
-    
+
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="136,10,0,0" TextWrapping="Wrap" Text="{Binding Path=CompanyName}" VerticalAlignment="Top" Width="346" />
         <Label Content="Company Name" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="95"/>
