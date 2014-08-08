@@ -26,5 +26,10 @@ namespace EmployeeViewer
             CurrentEmployee = null;
         }
 
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
     }
 }

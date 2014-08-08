@@ -12,7 +12,7 @@ namespace EmployeeViewer
         #endregion
 
         #region Properties
-
+        
         public static ObservableCollection<Employee> Employees { get; set; }
 
         #endregion
@@ -23,7 +23,7 @@ namespace EmployeeViewer
         {
             InitializeComponent();
             Employees = new ObservableCollection<Employee>();            
-            MainDataGrid.ItemsSource = Employees;   
+            MainDataGrid.ItemsSource = Employees;
         }
 
         #endregion
@@ -45,6 +45,21 @@ namespace EmployeeViewer
             EditItem();
         }
 
+
+        private void SaveFile_Click_Button(object sender, RoutedEventArgs e)
+        {
+            Core.Instance.SaveToFile(Employees);
+        }
+
+        private void Load_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Employees = Core.Instance.LoadFromFile();
+        }
+
+        private void DoubleClick_On_Item(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            EditItem();
+        }
         #endregion
 
         #region Public methods
@@ -56,10 +71,10 @@ namespace EmployeeViewer
         {
             var employeeInfo = new EmployeeInfo();
 
-            if (employeeInfo.ShowDialog() == true) 
+            if (employeeInfo.ShowDialog() == true & employeeInfo.CurrentEmployee != null)
             {
                 var employee = employeeInfo.CurrentEmployee;
-                Employees.Add(employee);
+                Employees.Add(employeeInfo.CurrentEmployee);
             };            
         }
 
@@ -91,10 +106,7 @@ namespace EmployeeViewer
 
         #endregion
 
-        private void SaveFile_Click_Button(object sender, RoutedEventArgs e)
-        {
-            Core.Instance.SaveToFile(Employees);
-        }
+
 
     }
 }

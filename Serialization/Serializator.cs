@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows;
 
 
 namespace EmployeeViewer.Serialization
@@ -30,10 +31,15 @@ namespace EmployeeViewer.Serialization
         /// <summary>
         /// Uns the serialize.
         /// </summary>
-        public static ObservableCollection<Employee> Deserialize(byte[] fileStream)
+        public static ObservableCollection<Employee> Deserialize(byte[] byteArray)
         {
-            throw new NotImplementedException("TODO!!!");
-            //return new ObservableCollection<Employee>();
+            Stream memoryStream = new MemoryStream();
+            BinaryFormatter binFormatter = new BinaryFormatter();
+
+            memoryStream.Write(byteArray, 0, byteArray.Length);
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            ObservableCollection<Employee> objectEployees = (ObservableCollection<Employee>)binFormatter.Deserialize(memoryStream);
+            return objectEployees;
         }
     }
 }
