@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using EmployeeViewer.Model;
+using System.Reflection;
+using log4net;
+using log4net.Config;
 
 namespace EmployeeViewer
 {
@@ -12,6 +15,12 @@ namespace EmployeeViewer
 
         #endregion
 
+        #region Public fields
+
+        public static readonly ILog log = LogManager.GetLogger(typeof(MainWindow));
+
+        #endregion
+
         #region Constructor
 
         public MainWindow()
@@ -19,6 +28,7 @@ namespace EmployeeViewer
             InitializeComponent();
             Employees = new ObservableCollection<Employee>();            
             MainDataGrid.ItemsSource = Employees;
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         #endregion
@@ -28,11 +38,13 @@ namespace EmployeeViewer
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
             AddItem();
+            log.Info("Add item");
         }
 
         private void Remove_Button_Click(object sender, RoutedEventArgs e)
         {
             RemoveItem();
+            log.Info("Remove item");
         }
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
@@ -48,14 +60,15 @@ namespace EmployeeViewer
         private void SaveFile_Click_Button(object sender, RoutedEventArgs e)
         {
             Core.Instance.SaveToFile(Employees);
+            log.Info("Save to file");
         }
 
         private void Load_Button_Click(object sender, RoutedEventArgs e)
         {
             Employees = Core.Instance.LoadFromFile();
             MainDataGrid.ItemsSource = Employees;
+            log.Info("Load from file");
         }
-
 
         #endregion
 
@@ -67,14 +80,12 @@ namespace EmployeeViewer
         public void AddItem()
         {
             var employeeInfo = new EmployeeInfo();
-
             if (employeeInfo.ShowDialog() == true & employeeInfo.CurrentEmployee != null)
             {
                 var employee = employeeInfo.CurrentEmployee;
                 Employees.Add(employeeInfo.CurrentEmployee);
-            };            
+            }
         }
-
         /// <summary>
         /// Removes selected item.
         /// </summary>
@@ -102,8 +113,5 @@ namespace EmployeeViewer
         }
 
         #endregion
-
-
-
     }
 }
