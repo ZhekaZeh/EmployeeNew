@@ -1,9 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using EmployeeViewer.Model;
-using System.Reflection;
 using log4net;
-using log4net.Config;
 
 namespace EmployeeViewer
 {
