@@ -36,16 +36,24 @@ namespace EmployeeViewer.Model
         /// </summary>
         public ObservableCollection<Employee> LoadFromFile()
         {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog();
             openFileDialog.Filter = "Binary File (.dat) |*.dat";
             openFileDialog.ShowDialog();
 
-            using (FileStream stream = File.Open(openFileDialog.FileName, FileMode.Open))
+            try
             {
-                byte[] fileBytes = new byte[stream.Length];
-                stream.Read(fileBytes, 0, fileBytes.Length);
-                return Serializator.Deserialize(fileBytes);
+                using (FileStream stream = File.Open(openFileDialog.FileName, FileMode.Open))
+                {
+                    byte[] fileBytes = new byte[stream.Length];
+                    stream.Read(fileBytes, 0, fileBytes.Length);
+                    return Serializator.Deserialize(fileBytes);
+                }
             }
+            catch (System.ArgumentException) 
+            { 
+                return null; 
+            }
+
         }
 
         /// <summary>
@@ -54,7 +62,7 @@ namespace EmployeeViewer.Model
         public void SaveToFile(ObservableCollection<Employee> employees)
         {
 
-            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            var saveFileDialog = new Microsoft.Win32.SaveFileDialog();
             saveFileDialog.FileName = "BinaryFile";
             saveFileDialog.Filter = "Binary File (.dat)|*.dat";
             saveFileDialog.ShowDialog();

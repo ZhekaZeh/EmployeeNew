@@ -63,7 +63,8 @@ namespace EmployeeViewer
 
         private void Load_Button_Click(object sender, RoutedEventArgs e)
         {
-            Employees = Core.Instance.LoadFromFile();
+            var tempEmloyees = Core.Instance.LoadFromFile();
+            Employees = tempEmloyees != null ? tempEmloyees : Employees;
             MainDataGrid.ItemsSource = Employees;
             log.Info("Load from file");
         }
